@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<canvas id="canvas" style="margin:50px auto;display:block;border:1px solid #aaa"></canvas>
+</body>
+<script>
+window.onload = function(){
+	var canvas = document.getElementById("canvas");
+	canvas.width=800;
+	canvas.height=800;
+	context = canvas.getContext("2d");
+	context.beginPath();
+	context.rect(100,100,600,600);
+	pathRect(context,200,200,400,200);
+	pathTriangle(context,300,450,250,650,350,650);
+	//context.arc(400,400,300,0,2*Math.PI,false);
+	//context.arc(400,400,150,0,2*Math.PI,true);
+	context.closePath();
+	
+	context.fillStyle="#058";
+	context.shadowColor="gray";
+	context.shadowOffsetX=10;
+	context.shadowOffsetY=10;
+	context.shadowBlur=10;
+	context.fill();	
+	context.beginPath();
+	context.arc(300,700,100,0,2*Math.PI);
+	context.stroke();
+
+}
+function pathRect(cxt,x,y,width,height){
+	cxt.moveTo(x,y);
+	cxt.lineTo(x,y+height);
+	cxt.lineTo(x+width,y+height);
+	cxt.lineTo(x+width,y);
+}
+function pathTriangle(cxt,x1,y1,x2,y2,x3,y3){
+	cxt.moveTo(x1,y1);
+	cxt.lineTo(x2,y2);
+	cxt.lineTo(x3,y3);
+	//cxt.lineTo(x1,y1);
+}
+
+</script>
+</html>
